@@ -1,0 +1,10 @@
+---
+# tasks file for ansible-docker
+- name: Install docker repo
+  copy: src=etc/yum.repos.d/docker.repo dest=/etc/yum.repos.d/docker.repo
+
+- name: Install docker
+  yum: pkg=docker-engine state=latest
+
+- name: Start docker
+  service: name=docker state=started enabled=yes
